@@ -1,0 +1,49 @@
+<root>
+    <tile>
+        <id>mandoe_website</id>
+        <title>Mandoe Website</title>
+        <description>I helped create the Mandoe website</description>
+        <thumbnail></thumbnail>
+        <type>image</type>
+    </tile>
+
+    <tile>
+        <id>tablet_kiosk</id>
+        <title><![CDATA[Tablet & Kiosk]]></title>
+        <description>A couple of responsive tablet kiosk apps I created - primarily used on iPad and Windows Surface Pro. Using HTML, CSS, JavaScript, jQuery, PHP and MySQL</description>
+        <thumbnail></thumbnail>
+        <type>image</type>
+    </tile>
+
+    <tile>
+        <id>mobile_website</id>
+        <title>Mobile Web Development</title>
+        <description>Some examples of mobile web applications I've created. Using HTML, CSS, JavaScript and jQuery.</description>
+        <thumbnail></thumbnail>
+        <type>image</type>
+    </tile>
+
+    <tile>
+        <id>pdf_tracking</id>
+        <title>PDF Tracking</title>
+        <description>A PDF reporting web application I created.  Using HTML, CSS, JavaScript, jQuery, PHP and MySQL</description>
+        <thumbnail></thumbnail>
+        <type>image</type>
+    </tile>
+
+    <tile>
+        <id>queuing</id>
+        <title>Queuing</title>
+        <description>Queuing applications I've created while working at Mandoe. Using HTML, CSS, JavaScript, jQuery, PHP and MySQL</description>
+        <thumbnail></thumbnail>
+        <type>image</type>
+    </tile>
+
+    <tile>
+        <id>reporting</id>
+        <title><![CDATA[Reporting &  Analytics]]></title>
+        <description>Worked on multiple reporting applications at Mandoe, including the Mandoe CMS. Using HTML, CSS and JavaScript.</description>
+        <thumbnail></thumbnail>
+        <type>image</type>
+    </tile>
+</root>

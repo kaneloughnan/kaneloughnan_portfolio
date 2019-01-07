@@ -1,0 +1,87 @@
+<root>
+    <block>
+        <image>subway.png</image>
+        <company>Subway</company>
+        <title>Sandwich Artist</title>
+        <text>Worked at Subway for 7 years.</text>
+        <skills>
+            <skill>Communication</skill>
+            <skill>Leadership</skill>
+            <skill>Customer Service</skill>
+        </skills>
+        <date>2010 - 2017</date>
+    </block>
+
+    <block>
+        <image>tafe.jpg</image>
+        <company>Loftus TAFE</company>
+        <title>Certificate IV – Multimedia</title>
+        <text>Studied a broad range of technologies in Multimedia.</text>
+        <skills>
+            <skill>HTML5</skill>
+            <skill>CSS3</skill>
+            <skill>Video editting</skill>
+            <skill>Adobe Creative Suite</skill>
+            <skill><![CDATA[2D & 3D Animation]]></skill>
+        </skills>
+        <date>2011</date>
+    </block>
+
+    <block>
+        <image>tafe.jpg</image>
+        <company>Loftus TAFE</company>
+        <title>Certificate IV – Web Based Technologies</title>
+        <text>Further developed HTML and CSS skills and started JavaScript.</text>
+        <skills>
+            <skill>HTML5</skill>
+            <skill>CSS3</skill>
+            <skill>JavaScript</skill>
+            <skill>SEO</skill>
+            <skill>Teamwork</skill>
+        </skills>
+        <date>2012</date>
+    </block>
+
+    <block>
+        <image>tafe.jpg</image>
+        <company>North Sydney TAFE</company>
+        <title>Diploma – Website Development</title>
+        <text>Further developed HTML, CSS, JavaScript and learned PHP and MySQL</text>
+        <skills>
+            <skill>HTML5</skill>
+            <skill>CSS3</skill>
+            <skill>JavaScript</skill>
+            <skill>PHP</skill>
+            <skill>MySQL</skill>
+        </skills>
+        <date>2013</date>
+    </block>
+
+    <block>
+        <image>mandoe.png</image>
+        <company>Mandoe</company>
+        <title>Web Programmer</title>
+        <text>Further developing all programming and teamwork skills.</text>
+        <skills>
+            <skill>HTML5</skill>
+            <skill>CSS3</skill>
+            <skill>JavaScript</skill>
+            <skill>PHP</skill>
+            <skill>MySQL</skill>
+            <skill>Teamwork</skill>
+        </skills>
+        <date>2014 - 2018</date>
+    </block>
+
+    <block>
+        <image>mandoe.png</image>
+        <company>Mandoe</company>
+        <title>Service Desk Analyst</title>
+        <text>Working on the service desk by providing support to customers.</text>
+        <skills>
+            <skill>Teamwork</skill>
+            <skill>Customer Service</skill>
+        </skills>
+        <date>2018 - Present</date>
+    </block>
+</root>
