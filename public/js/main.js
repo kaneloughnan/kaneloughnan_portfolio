@@ -151,11 +151,12 @@ $(window).on("load resize scroll", function(e){
 });
 
 $(function(){
+    $('#header .text').fadeIn(1000);
+
     particlesJS.load('header', 'assets/particles.json', function() {
         setTimeout(function(){
-            $('#header .logo').fadeIn(1500);
-            $('#header .job').fadeIn(1500);
-        }, 500);
+            $('#header .portrait-container').fadeIn(1000);
+        }, 700);
     });
 
     $('[data-scroll]').click(function(){

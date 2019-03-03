@@ -65,7 +65,7 @@ a:hover{
     left: 0;
     width: 100%;
     background-color: #333333;
-    z-index: 2;
+    z-index: 4;
     transition: all 0.3s ease;
 }
 #nav .small-logo{
@@ -100,33 +100,58 @@ a:hover{
 
 #header{
     width: 100%;
-    height: 600px;
-    height: calc(100vh - 50px);
-    max-height: 700px;
+    height: calc(100vh - 60px);
+    padding: 0;
     position: relative;
     -webkit-user-select: none; /* Chrome/Safari */        
     -moz-user-select: none; /* Firefox */
     -ms-user-select: none; /* IE10+ */
 }
+#header canvas{
+    z-index: 1;
+}
+#header .portrait-container, 
+#header .text{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    display: none;
+}
+#header .portrait-container{
+    left: 50%;
+    z-index: 2;
+}
+#header .text{
+    left: 0;
+    z-index: 3;
+}
+#header .portrait{
+    position: absolute;
+    max-height: 90%;
+    max-width: 90%;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+}
 #header .title{
     position: absolute;
-    top: 35%;
+    top: 40%;
     left: 50%;
     -ms-transform: translate(-50%, -50%); /* IE 9 */
     -webkit-transform: translate(-50%, -50%); /* Chrome, Safari, Opera */
     transform: translate(-50%, -50%);
-    width: 80%;
-    max-width: 800px;
     letter-spacing: -1px;
 }
 #header .title .logo{
-    font-size: 60px;
+    font-size: 50px;
     text-align: center;
-    display: none;
+    white-space: nowrap;
+    overflow: hidden;
 }
 #header .title .job{
     text-align: center;
-    display: none;
+    font-size: 24px;
 }
 #header .info{
     border-radius: 1px;
@@ -140,7 +165,7 @@ a:hover{
     -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
     -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
     box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
-    background-color: rgba(255,255,255,0.95);
+    background-color: rgba(255,255,255,0.98);
     padding: 40px;
     text-align: center;
 }
@@ -453,12 +478,31 @@ input[type="submit"]:disabled{
 }
 
 @media (max-width: 1000px){
+
+    #header .portrait-container, 
+    #header .text{
+        width: 100%;
+    }
+    #header .portrait-container{
+        left: 0;
+    }
+    #header .portrait{
+        z-index:-1;
+    }
+
     .tiles .tile{
         width: 50%;
     }
 
     .icons .icon{
         width: 25%;
+    }
+
+    #header .title .logo{
+        font-size: 50px;
+    }
+    #header .title .job{
+        font-size: 20px;
     }
 
     #contact .form-box{
@@ -475,6 +519,12 @@ input[type="submit"]:disabled{
         display: block;
         width: 100%;
     }
+
+    #header .portrait{
+        max-height: 98%;
+        max-width: 100%;
+        left: 50%;
+        transform: translateX(-50%);    }
 }
 
 @media (max-width: 700px){
@@ -505,14 +555,15 @@ input[type="submit"]:disabled{
     #header{
         height: calc(100vh - 60px);
     }
-    #header .title .logo{
-        font-size: 40px;
-    }
-    #header .title h3{
-        font-size: 18px;
-    }
     #header .title{
         top: 40%;
+    }
+    #header .title .logo{
+        font-size: 40px;
+        white-space: pre-wrap;
+    }
+    #header .title .job{
+        font-size: 18px;
     }
     #header .info{
         width: 100%;
@@ -584,5 +635,11 @@ input[type="submit"]:disabled{
 
     #slider-nav{
         height: 80px;
+    }
+
+    #header .portrait{
+        top: 45%;
+        transform: translate(-50%, -50%);
+        opacity: 0.8;
     }
 }
