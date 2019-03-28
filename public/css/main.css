@@ -48,6 +48,7 @@ p {
 
 a {
   -webkit-transition: all 0.3s ease;
+  /* Safari */
   transition: all 0.3s ease;
 }
 
@@ -71,6 +72,7 @@ a:hover {
   background-color: #333333;
   z-index: 4;
   -webkit-transition: all 0.3s ease;
+  /* Safari */
   transition: all 0.3s ease;
 }
 
@@ -81,6 +83,7 @@ a:hover {
   vertical-align: middle;
   font-family: ErasBold;
   -webkit-transition: all 0.3s ease;
+  /* Safari */
   transition: all 0.3s ease;
 }
 
@@ -95,6 +98,7 @@ a:hover {
   display: inline;
   font-size: 14px;
   -webkit-transition: all 0.3s ease;
+  /* Safari */
   transition: all 0.3s ease;
 }
 
@@ -121,6 +125,8 @@ a:hover {
   /* Firefox */
   -ms-user-select: none;
   /* IE10+ */
+  user-select: none;
+  /* Standard syntax */
 }
 
 #header canvas {
@@ -358,6 +364,7 @@ input[type="submit"] {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 14px;
   -webkit-transition: all 0.3s ease;
+  /* Safari */
   transition: all 0.3s ease;
   -webkit-appearance: none;
   font-weight: bold;
@@ -444,8 +451,9 @@ input[type="submit"]:disabled {
   background-size: cover;
   width: 100%;
   height: 100%;
-  -webkit-transition: all .7s;
-  transition: all .7s;
+  -webkit-transition: all 0.7s ease;
+  /* Safari */
+  transition: all 0.7s ease;
 }
 
 .tiles .tile .inner:focus,
