@@ -28,7 +28,7 @@ $orange: #ff6e2e;
 }
 
 @font-face {
-    font-family: "ErasBold";
+    font-family: $mainFont;
     src: url('/css/fonts/ERASBD.eot') format('eot'),
 	url('/css/fonts/ERASBD.TTF') format('truetype');
 }
@@ -139,12 +139,7 @@ a:hover{
         z-index: 1;
     }
 
-    .portrait-container, 
     .text{
-        width: 50%;
-        height: 100%;
-        position: absolute;
-        top: 0;
         display: none;
     }
 

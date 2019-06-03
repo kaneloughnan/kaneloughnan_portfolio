@@ -1,5 +1,5 @@
 @font-face {
-  font-family: "ErasBold";
+  font-family: ErasBold;
   src: url("/css/fonts/ERASBD.eot") format("eot"), url("/css/fonts/ERASBD.TTF") format("truetype");
 }
 
@@ -133,12 +133,7 @@ a:hover {
   z-index: 1;
 }
 
-#header .portrait-container,
 #header .text {
-  width: 50%;
-  height: 100%;
-  position: absolute;
-  top: 0;
   display: none;
 }
 
