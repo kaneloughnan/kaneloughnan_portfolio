@@ -187,7 +187,7 @@ $(function(){
             navHeight = 50;
         }
 
-        var scroll = Math.round($('#' + this.getAttribute('data-scroll')).position().top - navHeight);
+        var scroll = Math.ceil($('#' + this.getAttribute('data-scroll')).position().top - navHeight);
 
         $('html, body').animate({
             scrollTop: scroll
