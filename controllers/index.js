@@ -5,6 +5,8 @@ module.exports.set = function(app) {
     var nl2br  = require('nl2br');
     var ini = require('ini');
     var config = ini.parse(fs.readFileSync(__dirname + '/../../../kaneloughnan.ini', 'utf-8'));
+    var MongoClient = require('mongodb').MongoClient;
+    var MongoURL = "mongodb://localhost:27017/";
     
     app.post('/getGallery', (req, res) => {
         var response = {
@@ -54,7 +56,7 @@ module.exports.set = function(app) {
         var mailOptions = {
             from: config.email.username,
             to: config.email.username,
-            subject: 'Sending Email using Node.js',
+            subject: 'Someone filled out the form at kaneloughnan.com',
             html: '<p><strong>Name:</strong> ' + req.body.name + '</p>' + 
             '<p><strong>Email:</strong> ' + req.body.email + '</p>' + 
             '<p><strong>Subject:</strong> ' + req.body.subject + '</p>' + 
@@ -73,5 +75,38 @@ module.exports.set = function(app) {
                 res.send(response);
             }
         });
+    });
+
+    app.post('/logVisit', (req, res) => {
+        var response = {
+            success: true,
+            error_msgs: []
+        };
+        var data = req.body;
+
+        MongoClient.connect(MongoURL, function(err, db)
+        {
+            if(err)
+            {
+                response.success = false;
+                response.error_msgs.push(err);
+                res.status(400).send(response);
+            }
+
+            var dbo = db.db('kaneloughnan');
+
+            dbo.collection('visits').insertOne(data, function(err, res) {
+                if(err)
+                {
+                    response.success = false;
+                    response.error_msgs.push(err);
+                    res.status(400).send(response);
+                }
+
+                db.close();
+            });
+        });
+
+        res.send(response);
     });
 }

@@ -141,6 +141,26 @@ function animate(i, count)
     }, 150);
 }
 
+function logVisit()
+{
+    var parser = new UAParser();
+
+    $.ajax({
+        url: "/logVisit",
+        method: "POST",
+        data: parser.getResult(),
+        success: function(response){
+            if(!response.success)
+            {
+                console.error(response.error_msgs);
+            }
+        },
+        error: function(response){
+            console.error(response);
+        }
+    });
+}
+
 $(window).on("load resize scroll", function(e){
     if(isElementInViewport(document.getElementById('skills')))
     {
@@ -243,6 +263,8 @@ $(function(){
             });
         }
     });
+
+    logVisit();
 });
 
 $(document).keyup(function(e){
