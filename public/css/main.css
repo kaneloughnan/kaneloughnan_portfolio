@@ -386,21 +386,6 @@ input[type="submit"]:disabled {
   margin: 0;
 }
 
-#footer #siteseal {
-  position: absolute;
-  top: 50%;
-  right: 40px;
-  /* IE 9 */
-  -webkit-transform: translateY(-50%);
-  /* Chrome, Safari, Opera */
-  transform: translateY(-50%);
-}
-
-#footer #siteseal img {
-  display: block;
-  height: 30px;
-}
-
 .icons {
   max-width: 1000px;
   margin: 0 auto;
@@ -480,7 +465,7 @@ input[type="submit"]:disabled {
 }
 
 #gallery {
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.95);
   position: fixed;
   width: 100%;
   height: 100%;

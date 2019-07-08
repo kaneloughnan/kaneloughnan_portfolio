@@ -372,18 +372,6 @@ input[type="submit"]:disabled{
         color: #fff;
         margin: 0;
     }
-
-    #siteseal{
-        position: absolute;
-        top: 50%;
-        right: 40px;
-        @include transform(translateY(-50%));
-    }
-
-    #siteseal img{
-        display: block;
-        height: 30px;
-    }
 }
 
 .icons{
@@ -457,7 +445,7 @@ input[type="submit"]:disabled{
 }
 
 #gallery{
-    background-color: rgba(0,0,0,0.9);
+    background-color: rgba(0,0,0,0.95);
     position: fixed;
     width: 100%;
     height: 100%;
