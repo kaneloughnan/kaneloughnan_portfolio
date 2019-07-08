@@ -84,7 +84,7 @@ module.exports.set = function(app) {
         };
         var data = req.body;
 
-        MongoClient.connect(MongoURL, function(err, db)
+        MongoClient.connect(MongoURL, { useNewUrlParser: true }, function(err, db)
         {
             if(err)
             {
