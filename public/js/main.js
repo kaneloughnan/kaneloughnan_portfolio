@@ -188,7 +188,7 @@ $(window).on("load resize scroll", function(e){
     if(isElementInViewport($('#contact .form-box').get(0)))
     {
         $('#contact .form-box').css('opacity', 1);
-        $('#contact .form-box').addClass('animated jackInTheBox');
+        $('#contact .form-box').addClass('animated zoomInDown');
     }
 });
 
