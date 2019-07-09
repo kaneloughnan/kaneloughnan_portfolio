@@ -193,6 +193,8 @@ $(window).on("load resize scroll", function(e){
 });
 
 $(function(){
+    $('.lazy').lazy();
+
     $('#header .text').fadeIn(1000);
 
     particlesJS.load('header', 'assets/particles.json', function() {
