@@ -51,53 +51,19 @@ function gallery(tile)
         success: function(response){
             if(response.success)
             {
-                var slide;
+                var link;
 
                 for(var i = 0; i < response.images.length; i++)
                 {
-                    $('#slider-for').append('<div class="gallery-slide" style="background-image:url(\'img/portfolio/' + id + '/gallery/' + response.images[i] + '\');"></div>');
-                    $('#slider-nav').append('<img src="/img/portfolio/' + id + '/gallery/' + response.images[i] + '" class="nav-slide">');
+                    link = '<a class="gallery-link" href="img/portfolio/' + id + '/gallery/' + response.images[i] + '">' + 
+                        '<figure class="gallery-image">' + 
+                        '<img src="img/portfolio/' + id + '/gallery/' + response.images[i] + '">' + 
+                        '<figcaption>Photo caption</figcaption>' + 
+                        '</figure>' + 
+                    '</a>';
+
+                    $('#magnific .gallery').append(link);
                 }
-
-                $('#slider-for').slick({
-                    slidesToShow: 1,
-                    slidesToScroll: 1,
-                    arrows: false,
-                    fade: true,
-                    asNavFor: '#slider-nav'
-                });
-                
-                $('#slider-nav').slick({
-                    slidesToShow: 5,
-                    slidesToScroll: 1,
-                    arrows: false,
-                    asNavFor: '#slider-for',
-                    centerMode: true,
-                    focusOnSelect: true, 
-                    variableWidth: true,
-                    responsive: [
-                        {
-                            breakpoint: 1200,
-                            settings: {
-                                slidesToShow: 4
-                            }
-                        },
-                        {
-                            breakpoint: 1000,
-                            settings: {
-                                slidesToShow: 3
-                            }
-                        },
-                        {
-                            breakpoint: 700,
-                            settings: {
-                                slidesToShow: 2
-                            }
-                        }
-                    ]
-                });
-
-                $('#gallery-description').html(response.description);
             }
             else
             {
@@ -111,21 +77,14 @@ function gallery(tile)
         }
     });
 
-    $('#gallery').fadeIn(300, 'linear', function(){
-        $('body').css('overflow', 'hidden');
-    });
+    $('#magnific').fadeIn(300, 'linear');
 }
 
 function closeGallery()
 {
-    $('#gallery').fadeOut(300, 'linear', function(){
+    $('#magnific').fadeOut(300, 'linear', function(){
         $('#portfolio .tiles .tile .inner').removeAttr('active');
-        $('#slider-for').slick('unslick');
-        $('#slider-nav').slick('unslick');
-        $('#slider-for').html('');
-        $('#slider-nav').html('');
-        $('#gallery-description').html('');
-        $('body').css('overflow', 'auto');
+        $('#magnific .gallery').html('');
     });
 }
 
@@ -193,6 +152,31 @@ $(window).on("load resize scroll", function(e){
 });
 
 $(function(){
+    $('.gallery-link').magnificPopup({
+        type: 'image',
+        closeOnContentClick: true,
+        closeBtnInside: false,
+        mainClass: 'mfp-with-zoom mfp-img-mobile',
+        image: {
+            verticalFit: true,
+            titleSrc: function (item) {
+                return item.el.find('figcaption').text() || item.el.attr('title');
+            } 
+        },
+        zoom: {
+            enabled: true 
+        },
+        // duration: 300
+        gallery: {
+            enabled: true,
+            navigateByImgClick: false,
+            tCounter: '' 
+        },
+        disableOn: function () {
+            return $(window).width() > 640;
+        }
+    });
+
     $('.lazy').lazy();
 
     $('#header .text').fadeIn(1000);
