@@ -445,6 +445,15 @@ input[type="submit"]:disabled{
     }
 }
 
+.disable-scrollbars {
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none;  /* IE 10+ */
+    &::-webkit-scrollbar {
+        width: 0px;
+        background: transparent; /* Chrome/Safari/Webkit */
+    }
+}
+
 #magnific{
     background-color: rgba(0,0,0,0.95);
     position: fixed;
@@ -456,12 +465,22 @@ input[type="submit"]:disabled{
     z-index: 4;
     overflow-y: scroll;
 
+    .gallery{
+        width: 100%;
+    }
+
     .close{
-        position: absolute;
-        top: 20px;
-        right: 20px;
-        width: 30px;
+        position: fixed;
+        top: 0;
+        right: 0;
         z-index: 6;
+        padding: 6px;
+        background-color: #444444;
+        
+        img{
+            height: 20px;
+            display: block;
+        }
     }
 
     .close:hover{
