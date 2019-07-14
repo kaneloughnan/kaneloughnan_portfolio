@@ -19,23 +19,6 @@ function isElementInViewport(el)
     );
 }
 
-function isOdd(num)
-{
-    return num % 2;
-}
-
-function getProperty(property)
-{
-    if(typeof(property) !== "undefined")
-    {
-        return property;
-    }
-    else
-    {
-        return "";
-    }
-}
-
 function gallery(tile)
 {
     $(tile).find('.inner').attr('active','');
