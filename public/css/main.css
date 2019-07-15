@@ -228,12 +228,7 @@ a:hover {
   font-size: 110%;
 }
 
-.section {
-  padding: 60px;
-  position: relative;
-}
-
-.section .overlay {
+.overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -242,8 +237,14 @@ a:hover {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
-.section .overlay.light {
+.overlay.light {
   background-color: rgba(255, 255, 255, 0.6);
+}
+
+.section {
+  padding: 60px;
+  position: relative;
+  overflow-x: hidden;
 }
 
 .section-heading {
