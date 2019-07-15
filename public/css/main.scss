@@ -139,10 +139,6 @@ a:hover{
         z-index: 1;
     }
 
-    .text{
-        display: none;
-    }
-
     .portrait-container{
         left: 50%;
         z-index: 2;
@@ -168,6 +164,7 @@ a:hover{
         left: 50%;
         @include transform(translate(-50%, -50%));
         letter-spacing: -1px;
+        opacity: 0;
 
         .logo{
             font-size: 50px;

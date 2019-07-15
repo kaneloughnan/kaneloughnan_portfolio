@@ -133,10 +133,6 @@ a:hover {
   z-index: 1;
 }
 
-#header .text {
-  display: none;
-}
-
 #header .portrait-container {
   left: 50%;
   z-index: 2;
@@ -168,6 +164,7 @@ a:hover {
   /* Chrome, Safari, Opera */
   transform: translate(-50%, -50%);
   letter-spacing: -1px;
+  opacity: 0;
 }
 
 #header .title .logo {

@@ -134,7 +134,7 @@ $(window).on("load resize scroll", function(e){
     if(isElementInViewport($('#contact .form-box').get(0)))
     {
         $('#contact .form-box').css('opacity', 1);
-        $('#contact .form-box').addClass('animated zoomInDown');
+        $('#contact .form-box').addClass('animated fadeInDown');
     }
 });
 
@@ -164,7 +164,8 @@ $(function(){
         }
     });
 
-    $('#header .text').fadeIn(1000);
+    $('#header .title').css('opacity', 1);
+    $('#header .title').addClass('animated flash');
 
     particlesJS.load('header', 'assets/particles.json', function() {
         setTimeout(function(){
