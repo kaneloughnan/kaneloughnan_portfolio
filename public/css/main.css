@@ -482,7 +482,7 @@ input[type="submit"]:disabled {
 #magnific .close {
   position: fixed;
   top: 0;
-  right: 0;
+  left: 0;
   z-index: 6;
   padding: 6px;
   background-color: #444444;
