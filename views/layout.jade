@@ -23,7 +23,15 @@ html
         link(rel='stylesheet', href='/stylesheets/animate.min.css')
         link(rel='stylesheet', href='/stylesheets/magnific.min.css')
         link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+    body
+        div(id='nav-container')
+            div(id='nav')
+                p(class='small-logo', data-scroll='header') KL
+                ul
+                    li(data-scroll='experience') Experience
+                    li(data-scroll='skills') Skills
+                    li(data-scroll='portfolio') Portfolio
+                    li(data-scroll='contact') Contact
         block content
 
         script(async, src='https://www.googletagmanager.com/gtag/js?id=UA-130175362-1')

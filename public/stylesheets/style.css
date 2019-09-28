@@ -497,6 +497,11 @@ input[type="submit"]:disabled {
   cursor: pointer;
 }
 
+.error {
+  padding: 40px;
+  text-align: center;
+}
+
 @media (max-width: 1000px) {
   #header .text {
     width: 100%;

@@ -477,6 +477,11 @@ input[type="submit"]:disabled{
     }
 }
 
+.error{
+    padding: 40px;
+    text-align: center;
+}
+
 @media (max-width: 1000px){
     #header{
         .text{
