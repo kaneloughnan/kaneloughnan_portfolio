@@ -102,16 +102,16 @@ a:hover {
   transition: all 0.3s ease;
 }
 
+#nav ul li:not(:last-child) {
+  margin-right: 20px;
+}
+
 #nav .small-logo:hover,
 #nav ul li[data-scroll]:hover,
 #nav .small-logo.active,
 #nav ul li[data-scroll].active {
   cursor: pointer;
   color: #ff6e2e;
-}
-
-#nav ul li:not(:last-child) {
-  margin-right: 20px;
 }
 
 #header {
@@ -216,13 +216,13 @@ a:hover {
   display: inline-block;
 }
 
-.fname {
-  color: #ff6e2e;
-}
-
 .fname:first-letter,
 .lname:first-letter {
   font-size: 110%;
+}
+
+.fname {
+  color: #ff6e2e;
 }
 
 .overlay {
@@ -244,11 +244,19 @@ a:hover {
   overflow-x: hidden;
 }
 
-.section-heading {
+.section .section-heading {
   color: #fff;
   margin-bottom: 60px;
   text-align: center;
   position: relative;
+}
+
+.section .section-heading.light .section-heading {
+  color: #444;
+}
+
+.section .section-heading.dark {
+  background-color: #333333;
 }
 
 #experience {
@@ -257,14 +265,6 @@ a:hover {
   background-attachment: fixed;
   background-image: url("/images/mountains.jpg");
   position: relative;
-}
-
-.section.light .section-heading {
-  color: #444;
-}
-
-.section.dark {
-  background-color: #333333;
 }
 
 #skills {
