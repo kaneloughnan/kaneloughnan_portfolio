@@ -140,7 +140,7 @@ router.post('/contact', (req, res) => {
 	});
 	var mailOptions = {
 		from: config.email.username,
-		to: config.email.username,
+		to: 'kane.loughnan@gmail.com',
 		subject: 'Someone filled out the form at kaneloughnan.com',
 		html: '<p><strong>Name:</strong> ' + req.body.name + '</p>' + 
 		'<p><strong>Email:</strong> ' + req.body.email + '</p>' + 
