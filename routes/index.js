@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+var https = require('https');
+var querystring = require('querystring');
 var xml2js = require('xml2js').parseString;
 var nodemailer = require('nodemailer');
 var nl2br  = require('nl2br');
@@ -128,38 +130,84 @@ router.post('/getGallery', (req, res) => {
 router.post('/contact', (req, res) => {
 	var response = {
 		success: true,
+		data: {},
 		error_msgs: []
 	};
-	var transporter = nodemailer.createTransport({
-		
-		service: 'gmail',
-		auth: {
-			user: config.email.username,
-			pass: config.email.password
+	var googleResponse = {};
+	const postData = querystring.stringify({secret: '6Ld79v0UAAAAAFmYsl9CYkDE3a7GnqoD_8NDmrJ6', response: req.body.token});
+	const options = {
+		hostname: 'www.google.com',
+		port: 443,
+		path: '/recaptcha/api/siteverify',
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/x-www-form-urlencoded',
+			'Content-Length': Buffer.byteLength(postData)
 		}
-	});
-	var mailOptions = {
-		from: config.email.username,
-		to: 'kane.loughnan@gmail.com',
-		subject: 'Someone filled out the form at kaneloughnan.com',
-		html: '<p><strong>Name:</strong> ' + req.body.name + '</p>' + 
-		'<p><strong>Email:</strong> ' + req.body.email + '</p>' + 
-		'<p><strong>Subject:</strong> ' + req.body.subject + '</p>' + 
-		'<p><strong>Message:</strong> ' + nl2br(req.body.message) + '</p>'
 	};
 
-	transporter.sendMail(mailOptions, function(err, info){
-		if(err)
-		{
-			response.success = false;
-			response.error_msgs.push(err);
-			res.status(400).send(response);
-		}
-		else
-		{
-			res.send(response);
-		}
+	const googleRequest = https.request(options, (res) => {
+		console.log(`STATUS: ${res.statusCode}`);
+		console.log(`HEADERS: ${JSON.stringify(res.headers)}`);
+		res.setEncoding('utf8');
+		res.on('data', (chunk) => {
+			googleResponse = chunk;
+			console.log(chunk);
+			res.status(400).send(googleResponse);
+			return false;
+
+			if(!googleResponse.success)
+			{
+				response.success = false;
+				response.error_msgs.push(googleResponse['error-codes']);
+				res.status(400).send(response);
+			}
+
+			if(googleResponse.score < 0.5)
+			{
+				response.success = false;
+				response.error_msgs.push('Captcha score too low');
+				res.status(400).send(response);
+			}
+
+			var transporter = nodemailer.createTransport({
+				service: 'gmail',
+				auth: {
+					user: config.email.username,
+					pass: config.email.password
+				}
+			});
+			var mailOptions = {
+				from: config.email.username,
+				to: 'kane.loughnan@gmail.com',
+				subject: 'Someone filled out the form at kaneloughnan.com',
+				html: '<p><strong>Name:</strong> ' + req.body.name + '</p>' + 
+				'<p><strong>Email:</strong> ' + req.body.email + '</p>' + 
+				'<p><strong>Subject:</strong> ' + req.body.subject + '</p>' + 
+				'<p><strong>Message:</strong> ' + nl2br(req.body.message) + '</p>'
+			};
+
+			transporter.sendMail(mailOptions, function(err, info){
+				if(err)
+				{
+					response.success = false;
+					response.error_msgs.push(err);
+					res.status(400).send(response);
+				}
+				else
+				{
+					res.send(response);
+				}
+			});
+		});
+		res.on('end', () => {
+			console.log('No more data in response.');
+		});
 	});
+	googleRequest.on('error', (e) => {
+		console.error(`problem with request: ${e.message}`);
+	});
+	googleRequest.end();
 });
 
 router.post('/logVisit', (req, res) => {

@@ -220,40 +220,45 @@ $(function(){
             }
         },
         submitHandler: function(form){
-            $('form[name="contact"] input[type="submit"]').attr('disabled', true);
-            $('form[name="contact"] input[type="submit"]').attr('value', 'Sending...');
-            
-            $.ajax({
-                url: "/contact",
-                method: "POST",
-                data: {
-                    name: form.elements['name'].value,
-                    email: form.elements['email'].value,
-                    subject: form.elements['subject'].value,
-                    message: form.elements['message'].value,
-                },
-                success: function(response){
-                    if(response.success)
-                    {
-                        $('form[name="contact"]').remove();
-                        $('.form-message').html('Thanks for your message!');
-                    }
-                    else
-                    {
-                        $('form[name="contact"] input[type="submit"]').attr('disabled', false);
-                        $('form[name="contact"] input[type="submit"]').attr('value', 'Submit');
-                        
-                        alert('Your message could not be sent. Please try again later');
-                        console.error(response.error_msgs);
-                    }
-                },
-                error: function(response){
-                    $('form[name="contact"] input[type="submit"]').attr('disabled', false);
-                    $('form[name="contact"] input[type="submit"]').attr('value', 'Submit');
+            grecaptcha.ready(function(){
+                grecaptcha.execute('6Ld79v0UAAAAAKTK-j722WE9cDWG9lDV18qB209c', {action: 'submit'}).then(function(token){
+                    $('form[name="contact"] input[type="submit"]').attr('disabled', true);
+                    $('form[name="contact"] input[type="submit"]').attr('value', 'Sending...');
                     
-                    alert('Your message could not be sent. Please try again later');
-                    console.error(response);
-                }
+                    $.ajax({
+                        url: "/contact",
+                        method: "POST",
+                        data: {
+                            name: form.elements['name'].value,
+                            email: form.elements['email'].value,
+                            subject: form.elements['subject'].value,
+                            message: form.elements['message'].value,
+                            token: token
+                        },
+                        success: function(response){
+                            if(response.success)
+                            {
+                                $('form[name="contact"]').remove();
+                                $('.form-message').html('Thanks for your message!');
+                            }
+                            else
+                            {
+                                $('form[name="contact"] input[type="submit"]').attr('disabled', false);
+                                $('form[name="contact"] input[type="submit"]').attr('value', 'Submit');
+                                
+                                alert('Your message could not be sent. Please try again later');
+                                console.error(response.error_msgs);
+                            }
+                        },
+                        error: function(response){
+                            $('form[name="contact"] input[type="submit"]').attr('disabled', false);
+                            $('form[name="contact"] input[type="submit"]').attr('value', 'Submit');
+                            
+                            alert('Your message could not be sent. Please try again later');
+                            console.error(response);
+                        }
+                    });
+                });
             });
         }
     });
