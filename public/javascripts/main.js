@@ -224,7 +224,7 @@ $(function(){
                 grecaptcha.execute('6Ld79v0UAAAAAKTK-j722WE9cDWG9lDV18qB209c', {action: 'submit'}).then(function(token){
                     $('form[name="contact"] input[type="submit"]').attr('disabled', true);
                     $('form[name="contact"] input[type="submit"]').attr('value', 'Sending...');
-                    
+
                     $.ajax({
                         url: "/contact",
                         method: "POST",
