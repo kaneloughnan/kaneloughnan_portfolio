@@ -58,7 +58,6 @@ function gallery(tile)
 
     $('#gallery').fadeIn(300, 'linear', function(){
         fotorama = $('#gallery .fotorama').fotorama().data('fotorama');
-        
         $('body').css('overflow', 'hidden');
     });
 }
