@@ -502,6 +502,10 @@ input[type="submit"]:disabled {
   text-align: center;
 }
 
+.grecaptcha-badge {
+  display: none;
+}
+
 @media (max-width: 1000px) {
   #header .text {
     width: 100%;
