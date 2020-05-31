@@ -463,7 +463,7 @@ input[type="submit"]:disabled {
   cursor: pointer;
 }
 
-#magnific {
+#gallery {
   background-color: rgba(0, 0, 0, 0.95);
   position: fixed;
   width: 100%;
@@ -475,25 +475,33 @@ input[type="submit"]:disabled {
   overflow-y: scroll;
 }
 
-#magnific .gallery {
-  width: 100%;
+#gallery .fotorama {
+  max-width: 100%;
+  max-height: 100%;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  /* IE 9 */
+  -webkit-transform: translate(-50%, -50%);
+  /* Chrome, Safari, Opera */
+  transform: translate(-50%, -50%);
 }
 
-#magnific .close {
+#gallery .close {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 6;
-  padding: 6px;
+  padding: 12px;
   background-color: #444444;
 }
 
-#magnific .close img {
+#gallery .close img {
   height: 20px;
   display: block;
 }
 
-#magnific .close:hover {
+#gallery .close:hover {
   cursor: pointer;
 }
 

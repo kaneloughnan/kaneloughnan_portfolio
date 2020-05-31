@@ -1,3 +1,5 @@
+var fotorama;
+
 function isElementInViewport(el)
 {
     var rect = el.getBoundingClientRect(),
@@ -39,14 +41,7 @@ function gallery(tile)
 
                 for(var i = 0; i < response.images.length; i++)
                 {
-                    link = '<a class="gallery-link" href="/images/portfolio/' + id + '/gallery/' + response.images[i] + '">' + 
-                        '<figure class="gallery-image">' + 
-                            '<img src="/images/portfolio/' + id + '/gallery/' + response.images[i] + '">' + 
-                            '<figcaption>' + title + '</figcaption>' + 
-                        '</figure>' + 
-                    '</a>';
-
-                    $('#magnific .gallery').append(link);
+                    $('#gallery .fotorama').append('<img src="/images/portfolio/' + id + '/gallery/' + response.images[i] + '">');
                 }
             }
             else
@@ -61,16 +56,20 @@ function gallery(tile)
         }
     });
 
-    $('#magnific').fadeIn(300, 'linear', function(){
+    $('#gallery').fadeIn(300, 'linear', function(){
+        fotorama = $('#gallery .fotorama').fotorama().data('fotorama');
+        
         $('body').css('overflow', 'hidden');
     });
 }
 
 function closeGallery()
 {
-    $('#magnific').fadeOut(300, 'linear', function(){
+    $('#gallery').fadeOut(300, 'linear', function(){
+        fotorama.destroy();
+
         $('#portfolio .tiles .tile .inner').removeAttr('active');
-        $('#magnific .gallery').html('');
+        $('#gallery .fotorama').html('');
         $('body').css('overflow', 'auto');
     });
 }
@@ -139,31 +138,6 @@ $(window).on("load resize scroll", function(e){
 });
 
 $(function(){
-    $('.gallery-link').magnificPopup({
-        type: 'image',
-        closeOnContentClick: true,
-        closeBtnInside: false,
-        mainClass: 'mfp-with-zoom mfp-img-mobile',
-        image: {
-            verticalFit: true,
-            titleSrc: function (item) {
-                return item.el.find('figcaption').text() || item.el.attr('title');
-            } 
-        },
-        zoom: {
-            enabled: true 
-        },
-        // duration: 300
-        gallery: {
-            enabled: true,
-            navigateByImgClick: false,
-            tCounter: '' 
-        },
-        disableOn: function () {
-            return $(window).width() > 640;
-        }
-    });
-
     $('#header .title').css('opacity', 1);
     $('#header .title').addClass('animated flash');
 
@@ -270,7 +244,7 @@ $(document).keyup(function(e){
     //If escpape key is pressed
     if(e.keyCode == 27)
     {
-        if($('#magnific').is(":visible"))
+        if($('#gallery').is(":visible"))
         {
             closeGallery();
         }
