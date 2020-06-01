@@ -470,6 +470,8 @@ input[type="submit"]:disabled{
         left: 50%;
         top: 50%;
         @include transform(translate(-50%, -50%));
+        opacity: 0;
+        width: 100%;
     }
 
     .close{

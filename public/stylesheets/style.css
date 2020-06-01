@@ -483,6 +483,8 @@ input[type="submit"]:disabled {
   -webkit-transform: translate(-50%, -50%);
   /* Chrome, Safari, Opera */
   transform: translate(-50%, -50%);
+  opacity: 0;
+  width: 100%;
 }
 
 #gallery .close {
