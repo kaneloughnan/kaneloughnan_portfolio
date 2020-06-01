@@ -43,6 +43,12 @@ function gallery(tile)
                 {
                     $('#gallery .fotorama').append('<img src="/images/portfolio/' + id + '/gallery/' + response.images[i] + '">');
                 }
+
+                $('#gallery').fadeIn(200, 'linear', function(){
+                    fotorama = $('#gallery .fotorama').fotorama().data('fotorama');
+                    $('#gallery .fotorama').fadeTo(200, 1);
+                    $('body').css('overflow', 'hidden');
+                });
             }
             else
             {
@@ -55,19 +61,15 @@ function gallery(tile)
             console.error(response);
         }
     });
-
-    $('#gallery').fadeIn(300, 'linear', function(){
-        fotorama = $('#gallery .fotorama').fotorama().data('fotorama');
-        $('body').css('overflow', 'hidden');
-    });
 }
 
 function closeGallery()
 {
-    $('#gallery').fadeOut(300, 'linear', function(){
+    $('#gallery').fadeOut(200, 'linear', function(){
         fotorama.destroy();
 
         $('#portfolio .tiles .tile .inner').removeAttr('active');
+        $('#gallery .fotorama').fadeTo(200, 0);
         $('#gallery .fotorama').html('');
         $('body').css('overflow', 'auto');
     });
