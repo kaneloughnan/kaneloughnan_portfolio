@@ -1,2 +1,8 @@
 User-agent: *
-Disallow: /
+Disallow: /images/
+Disallow: /assets/
+Disallow: *.pdf
+Disallow: *.jpg
+Disallow: *.jpeg
+Disallow: *.png
+Disallow: *.svg
