@@ -62,6 +62,7 @@ router.get('/', function(req, res, next) {
 		{src: 'css3.png', alt: 'CSS3 logo'}, 
 		{src: 'sass.png', alt: 'Sass logo'}, 
 		{src: 'js.png', alt: 'JavaScript logo'}, 
+		{src: 'angular.png', alt: 'Angular logo'}, 
 		{src: 'jquery.gif', alt: 'jQuery logo'}, 
 		{src: 'bootstrap.png', alt: 'Bootstrap logo'}, 
 		{src: 'php.png', alt: 'PHP logo'}, 
@@ -72,7 +73,6 @@ router.get('/', function(req, res, next) {
 		{src: 'swift.png', alt: 'Swift logo'}, 
 		{src: 'git.png', alt: 'Git logo'}, 
 		{src: 'jira.png', alt: 'JIRA logo'}, 
-		{src: 'microsoft_office.png', alt: 'Microsoft Office logo'}, 
 		{src: 'bash.png', alt: 'Bash logo'}, 
 		{src: 'netsuite.png', alt: 'Netsuite logo'}, 
 		{src: 'rti.png', alt: 'RTI logo'}
