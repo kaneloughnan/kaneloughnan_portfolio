@@ -90,12 +90,12 @@ function animateIcons(i, count)
 
 function logVisit()
 {
-    var parser = new UAParser();
-
     $.ajax({
         url: "/logVisit",
         method: "POST",
-        data: parser.getResult(),
+        data: {
+            userAgent: navigator.userAgent
+        },
         success: function(response){
             if(!response.success)
             {

@@ -185,35 +185,19 @@ router.post('/contact', (req, res) => {
 	});
 });
 
-router.post('/logVisit', (req, res) => {
+router.post('/logVisit', (req, res) => {	
 	var response = {
 		success: true,
 		error_msgs: []
 	};
-	var data = req.body;
 
-	MongoClient.connect(MongoURL, { useNewUrlParser: true }, function(err, db)
-	{
-		if(err)
-		{
-			response.success = false;
-			response.error_msgs.push(err);
-			res.status(400).send(response);
-		}
-
-		var dbo = db.db('kaneloughnan');
-
-		dbo.collection('visits').insertOne(data, function(err, res) {
-			if(err)
-			{
-				response.success = false;
-				response.error_msgs.push(err);
-				res.status(400).send(response);
-			}
-
-			db.close();
-		});
-	});
+	try {
+		fs.appendFileSync('./visit.txt', `${new Date()} ${req.body.userAgent}\n`);
+	}
+	catch(err) {
+		response.success = false;
+		response.error_msgs.push(err.message);
+	}
 
 	res.send(response);
 });
