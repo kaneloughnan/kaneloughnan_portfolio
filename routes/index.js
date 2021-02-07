@@ -185,14 +185,14 @@ router.post('/contact', (req, res) => {
 	});
 });
 
-router.post('/logVisit', (req, res) => {	
+router.post('/logVisit', (req, res) => {
 	var response = {
 		success: true,
 		error_msgs: []
 	};
 
 	try {
-		fs.appendFileSync('./visit.txt', `${new Date()} ${req.body.userAgent}\n`);
+		fs.appendFileSync('./visit.txt', `${new Date()} ${req.headers['x-forwarded-for'] || req.ip} ${req.body.userAgent}\n`);
 	}
 	catch(err) {
 		response.success = false;
